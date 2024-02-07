@@ -9,4 +9,6 @@ public interface UserServices {
     List<ModeloUser> findAll();
 
     ModeloUser findById(int id);
+
+    ModeloUser save(ModeloUser objUsuario);
 }

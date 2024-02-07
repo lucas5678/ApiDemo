@@ -24,6 +24,8 @@ dependencies {
 	annotationProcessor 'org.projectlombok:lombok:1.18.22'
     implementation 'mysql:mysql-connector-java:8.0.33'
     implementation group: 'org.modelmapper', name: 'modelmapper', version: '3.2.0'
+    implementation 'jakarta.validation:jakarta.validation-api:3.0.0' // Dependência para as anotações de validação
+    implementation 'org.hibernate.validator:hibernate-validator:7.0.2.Final' // Implementação do Hibernate Validator
 }
 
 tasks.named('test') {
