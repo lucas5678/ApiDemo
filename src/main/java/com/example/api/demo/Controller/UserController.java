@@ -1,6 +1,8 @@
 package com.example.api.demo.Controller;
 
 import java.util.List;
+import java.util.stream.Collector;
+import java.util.stream.Collectors;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,8 +26,12 @@ public class UserController {
     ModelMapper mapper;
 
     @GetMapping("/usuariosAll")
-    private ResponseEntity<List<ModeloUser>> UsuariosAll(){
-        return ResponseEntity.ok().body(implemento.findAll());
+    private ResponseEntity<List<UserDto>> UsuariosAll(){
+        List<ModeloUser> list = implemento.findAll();
+        List<UserDto> listDto = list.stream()
+                            .map(x -> mapper.map(x, UserDto.class))
+                            .collect(Collectors.toList());
+        return ResponseEntity.ok().body(listDto);
     }
 
     @PostMapping("/usuario")
