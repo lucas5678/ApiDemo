@@ -27,11 +27,9 @@ public class UserController {
 
     @GetMapping("/usuariosAll")
     private ResponseEntity<List<UserDto>> UsuariosAll(){
-        List<ModeloUser> list = implemento.findAll();
-        List<UserDto> listDto = list.stream()
-                            .map(x -> mapper.map(x, UserDto.class))
-                            .collect(Collectors.toList());
-        return ResponseEntity.ok().body(listDto);
+        return ResponseEntity.ok().body(implemento.findAll()
+            .stream().map(x -> mapper.map(x, UserDto.class)).collect(Collectors.toList())
+        );
     }
 
     @PostMapping("/usuario")
