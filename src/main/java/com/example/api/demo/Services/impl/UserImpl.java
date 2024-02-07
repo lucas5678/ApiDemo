@@ -2,7 +2,6 @@ package com.example.api.demo.Services.impl;
 
 import java.util.Optional;
 
-import org.hibernate.ObjectNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -27,7 +26,6 @@ public class UserImpl implements UserServices {
     public ModeloUser findById(int id) {
         Optional<ModeloUser> obj = userRepo.findById(id);
         return obj.orElseThrow(() -> new ObjectNotFoudExceptions("Usuário não encontrado com o ID: " + id));
-        //return null;
     }
 
    
