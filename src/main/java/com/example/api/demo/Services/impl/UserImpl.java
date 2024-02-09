@@ -12,6 +12,7 @@ import com.example.api.demo.Modelo.ModeloUser;
 import com.example.api.demo.Repository.usuariosRepo;
 import com.example.api.demo.Services.UserServices;
 import com.example.api.demo.Services.ExceptionSupplier;
+import com.example.api.demo.Services.Exceptions.ObjectBadResquest;
 import com.example.api.demo.Services.Exceptions.ObjectNotFoudExceptions;
 
 import jakarta.validation.ConstraintViolation;
@@ -43,7 +44,7 @@ public class UserImpl implements UserServices {
         Set<ConstraintViolation<ModeloUser>> violations = validator.validate(objUsuario);
         Optional<ModeloUser> obj = Optional.ofNullable(null);
         if(!violations.isEmpty()){
-            return obj.orElseThrow(() -> new ObjectNotFoudExceptions("Preencha todos os campos"));
+            return obj.orElseThrow(() -> new ObjectBadResquest("Preencha todos os campos"));
         }   
         return null;
     }   

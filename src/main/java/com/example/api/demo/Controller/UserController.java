@@ -35,4 +35,10 @@ public class UserController {
     private ResponseEntity<UserDto> Usuario(@RequestBody ModeloUser usuario){
         return ResponseEntity.ok().body(mapper.map(implemento.findById(usuario.getId()), UserDto.class));
     }
+
+    @PostMapping("/usuario-cadastro")
+    private ResponseEntity<ModeloUser> CriarUsuario(@RequestBody UserDto objUser){
+        
+        return ResponseEntity.ok().body(implemento.save(mapper.map(objUser, ModeloUser.class)));
+    }
 }
