@@ -8,4 +8,4 @@ COPY build/libs/demo-0.0.1-SNAPSHOT.jar /app/demo.jar
 WORKDIR /app
 
 # Comando para executar a aplicação quando o contêiner for iniciado
-CMD ["java", "-jar", "demo.jar"]
+CMD ["java", "-jar", "api_horta.jar"]
